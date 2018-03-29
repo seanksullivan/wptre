@@ -4,7 +4,7 @@
 // </copyright>
 //------------------------------------------------------------------------------
 
-namespace WebTestResultsExtensions2015
+namespace WebTestResultsExtensions
 {
     using System;
 
@@ -16,6 +16,6 @@ namespace WebTestResultsExtensions2015
         /// <summary>
         /// WebTestResultsPackage GUID string.
         /// </summary>
-        public const string PackageGuidString = "5f301f4f-c72b-4a35-8c4e-7b959ca601d1";
+        public const string PackageGuidString = "5f301f4f-c72b-4a35-8c4e-7b959ca601d2";
     }
 }

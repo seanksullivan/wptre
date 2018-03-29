@@ -24,7 +24,7 @@ using System.Runtime.InteropServices;
 using System.Windows.Forms;
 using WebTestResultsExtensions;
 
-namespace WebTestResultsExtensions2015
+namespace WebTestResultsExtensions
 {
     /// <summary>
     /// This is the class that implements the package exposed by this assembly.
@@ -57,12 +57,6 @@ namespace WebTestResultsExtensions2015
 
         #endregion Private Fields
 
-        #region Public Constructors
-
-
-
-        #endregion Public Constructors
-
         #region Protected Methods
 
         /// <summary>
@@ -75,6 +69,8 @@ namespace WebTestResultsExtensions2015
             base.Initialize();
             DTE2 dte = (DTE2)GetService(typeof(DTE));
             LoadTestPackageExt loadTestPackageExt = dte.GetObject("Microsoft.VisualStudio.TestTools.LoadTesting.LoadTestPackageExt") as LoadTestPackageExt;
+
+            //Microsoft.VisualStudio.TestTools.WebTesting.WebTestResultPage
             if (loadTestPackageExt != null)
             {
                 foreach (WebTestResultViewer webTestResultViewer in loadTestPackageExt.WebTestResultViewerExt.ResultWindows)
