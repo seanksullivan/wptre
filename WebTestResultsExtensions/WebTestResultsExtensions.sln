@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27130.2036
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebTestResultsExtensions", "WebTestResultsExtensions2015\WebTestResultsExtensions.csproj", "{E82DB6AB-4F7A-4D33-BB4D-6F0DF4A89D59}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebTestResultsExtensions", "WebTestResultsExtensions2017\WebTestResultsExtensions.csproj", "{E82DB6AB-4F7A-4D33-BB4D-6F0DF4A89D59}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CommonUserControl", "CommonUserControl\CommonUserControl.csproj", "{8C8F9C23-2BAF-4E76-A3D7-6AB339986E52}"
 EndProject
