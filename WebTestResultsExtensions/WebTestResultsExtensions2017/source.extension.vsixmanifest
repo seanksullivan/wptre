@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PackageManifest Version="2.0.0" xmlns="http://schemas.microsoft.com/developer/vsx-schema/2011" xmlns:d="http://schemas.microsoft.com/developer/vsx-schema-design/2011">
     <Metadata>
-        <Identity Id="WebTestResultsExtensions.FDFB6F0C-9584-41B3-983E-0939205345A4" Version="2.4" Language="en-US" Publisher="Load Test Community" />
+        <Identity Id="WebTestResultsExtensions.FDFB6F0C-9584-41B3-983E-0939205345A4" Version="2.5" Language="en-US" Publisher="Load Test Community" />
         <DisplayName>WebTestResults Viewer Extension</DisplayName>
         <Description xml:space="preserve">This extension allows to see in a descriptive way the web test execution</Description>
         <MoreInfo>https://github.com/seanksullivan/wptre</MoreInfo>
