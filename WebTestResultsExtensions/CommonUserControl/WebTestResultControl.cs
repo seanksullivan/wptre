@@ -12,6 +12,7 @@ using System.Threading.Tasks;
 using Newtonsoft;
 using System.Windows.Forms;
 using Newtonsoft.Json.Linq;
+using Newtonsoft.Json;
 
 namespace WebTestResultsExtensions
 {
@@ -121,7 +122,17 @@ namespace WebTestResultsExtensions
         /// <returns></returns>
         static string FormatJson(string json)
         {
-            return JToken.Parse(json).ToString();
+            var result = "";
+            try
+            {
+                result = JToken.Parse(json).ToString();
+            }
+            catch
+            {
+                // Simply return the string contents
+                result = json;
+            }
+            return result;
         }
 
         /// <summary>
@@ -174,16 +185,20 @@ namespace WebTestResultsExtensions
             sb.Append(@" \line ");
             sb.Append(@" \line ");
             sb.Append(@"\b BODY \b0" + @" \line ");
+
+            // Get the Request Body text from either Request.Body or Request.BodyBytes
+            var requestBodyString = GetRequestBodyString(WebTestResults);
+
             if (WebTestResults.Request.ContentType.IndexOf("json", StringComparison.Ordinal) > 0)
             {
-                string UniReq = TestUtils.GetRequestStringBody(WebTestResults.Request.Body);
+                string UniReq = requestBodyString;
                 UniReq = FormatJson(UniReq);
                 UniReq = GetRtfUnicodeEscapedString(UniReq);
                 sb.Append(UniReq + @" \line ");
             }
             else
             {
-                sb.Append(TestUtils.GetRequestStringBody(WebTestResults.Request.Body) + @" \line ");
+                sb.Append(requestBodyString + @" \line ");
             }
 
             sb.Append(@" \line ");
@@ -295,6 +310,33 @@ namespace WebTestResultsExtensions
             if (counter > 0)
                 sb.Append(@"\b*******************************************************\b0" + @" \line ");
             return sb.ToString();
+        }
+
+        /// <summary>
+        /// Acquire the WebTestResults.Request Body or BodyBytes.
+        /// If the WebTest was executed within a LoadTest, then use the BodyBytes.
+        /// If the WebTest was executed within a WebTest, then use the IHttpBody.
+        /// </summary>
+        /// <param name="WebTestResults"></param>
+        /// <returns></returns>
+        private static string GetRequestBodyString(WebTestRequestResult WebTestResults)
+        {
+            var requestBodyString = string.Empty;
+
+            if (WebTestResults.Request.Body == null)
+            {
+                var bodyBytes = WebTestResults.Request.BodyBytes;
+                if (bodyBytes != null)
+                {
+                    requestBodyString = Encoding.UTF8.GetString(bodyBytes);
+                }
+            }
+            else
+            {
+                requestBodyString = TestUtils.GetRequestStringBody(WebTestResults.Request.Body);
+            }
+
+            return requestBodyString;
         }
 
         #endregion Private Methods
